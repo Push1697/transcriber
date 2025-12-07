@@ -1,0 +1,8 @@
+torch
+torchvision
+torchaudio
+openai-whisper
+tqdm
+fastapi
+uvicorn
+python-multipart
