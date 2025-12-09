@@ -32,10 +32,8 @@ venv/
 transcriber-venv/
 
 # Environment
-.env
 
 # IDE
-.vscode/
 .idea/
 *.swp
 
@@ -44,4 +42,6 @@ BLOG.md
 DEPLOYMENT_GUIDE.md
 
 # CI
-.github/workflows/ci.yml
+!.github/workflows/ci.yml
+config.bat
+node_modules
