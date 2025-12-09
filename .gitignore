@@ -38,3 +38,10 @@ transcriber-venv/
 .vscode/
 .idea/
 *.swp
+
+# Files
+BLOG.md
+DEPLOYMENT_GUIDE.md
+
+# CI
+.github/workflows/ci.yml

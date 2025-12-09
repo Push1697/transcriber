@@ -1,7 +1,7 @@
 torch
 torchvision
 torchaudio
-openai-whisper
+faster-whisper
 tqdm
 fastapi
 uvicorn

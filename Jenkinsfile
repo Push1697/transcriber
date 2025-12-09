@@ -43,6 +43,23 @@ pipeline {
         sh 'docker push $REGISTRY_USR/$IMAGE_NAME:$IMAGE_TAG'
       }
     }
+    stage('Update Manifest') {
+      steps {
+        script {
+          withCredentials([usernamePassword(credentialsId: 'git-creds', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+            sh '''
+              git config user.email "jenkins@example.com"
+              git config user.name "Jenkins CI"
+              # Update image tag in deployment.yaml
+              sed -i "s|image: .*|image: $REGISTRY_USR/$IMAGE_NAME:$IMAGE_TAG|g" k8s/deployment.yaml
+              git add k8s/deployment.yaml
+              git commit -m "chore: update image tag to $IMAGE_TAG [skip ci]"
+              git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/$GIT_USERNAME/video_transcriber.git HEAD:main
+            '''
+          }
+        }
+      }
+    }
   }
   post {
     always {
