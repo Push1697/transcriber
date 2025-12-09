@@ -23,7 +23,7 @@ RUN pip install --upgrade pip \
     && pip install --no-cache-dir torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cpu \
     && pip install --no-cache-dir -r requirements.txt
 
-COPY --chown=user app.py transcribe.py transcribe_simple.py ./
+COPY --chown=user app.py transcribe.py transcribe.py ./
 
 EXPOSE 8000
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
